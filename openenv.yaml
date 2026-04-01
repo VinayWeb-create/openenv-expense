@@ -1,0 +1,19 @@
+environment:
+  name: "Expense Management Environment"
+  entry_point: "env.expense_env.ExpenseEnv"
+  version: "1.0.0"
+
+tasks:
+  easy:
+    path: "tasks.easy.EASY_TASKS"
+    description: "Prioritize saving for at least 7 days."
+  medium:
+    path: "tasks.medium.MEDIUM_TASKS"
+    description: "Avoid spending actions for 15 days."
+  hard:
+    path: "tasks.hard.HARD_TASKS"
+    description: "Expert balance management for 30 days."
+
+baseline_agent:
+  script_path: "baseline_agent.py"
+  episodes: 5
