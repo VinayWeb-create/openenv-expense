@@ -176,17 +176,22 @@ async def get_state(user: dict = Depends(get_current_user)):
 
 # --- Frontend Serving ---
 
+# Initialize path to current file's directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Serve index.html at the root URL
 @app.get("/")
 async def root():
-    return FileResponse("index.html")
+    return FileResponse(os.path.join(BASE_DIR, "index.html"))
 
+# Create a manual endpoint for scripts and styles (simple approach)
 @app.get("/index.css")
 async def css():
-    return FileResponse("index.css")
+    return FileResponse(os.path.join(BASE_DIR, "index.css"))
 
 @app.get("/index.js")
 async def js():
-    return FileResponse("index.js")
+    return FileResponse(os.path.join(BASE_DIR, "index.js"))
 
 if __name__ == "__main__":
     import uvicorn
