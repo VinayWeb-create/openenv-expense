@@ -9,12 +9,29 @@
 </head>
 <body>
     <!-- Auth Overlay -->
-    <div id="auth-overlay" class="auth-overlay">
+    <div id="auth-overlay" class="auth-overlay" role="dialog" aria-modal="true" aria-labelledby="auth-title">
         <div class="auth-card">
-            <h2>Welcome to OpenEnv</h2>
+            <h2 id="auth-title">Welcome to OpenEnv</h2>
             <p id="auth-msg">Please Login or Signup to continue</p>
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
+
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+                autocomplete="username"
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                autocomplete="current-password"
+            >
+
             <div class="auth-buttons">
                 <button onclick="handleAuth('login')" class="btn-auth">Login</button>
                 <button onclick="handleAuth('signup')" class="btn-auth signup-btn">Signup</button>
@@ -54,7 +71,7 @@
 
         <!-- Real-Time Chart -->
         <div class="chart-container">
-            <canvas id="balanceChart"></canvas>
+            <canvas id="balanceChart" role="img" aria-label="Balance over time chart"></canvas>
         </div>
 
         <!-- Action Controls -->
@@ -62,26 +79,26 @@
             <div class="controls-header">
                 <h2>Take Action</h2>
                 <div class="auto-toggle">
-                    <span id="voice-btn" onclick="startVoice()">🎙️</span>
-                    <label>Auto-Play</label>
-                    <input type="checkbox" id="auto-play-toggle" onchange="toggleAutoPlay()">
+                    <span id="voice-btn" onclick="startVoice()" role="button" aria-label="Start voice control" tabindex="0">🎙️</span>
+                    <label for="auto-play-toggle">Auto-Play</label>
+                    <input type="checkbox" id="auto-play-toggle" name="auto-play" onchange="toggleAutoPlay()">
                 </div>
             </div>
             <div class="action-buttons">
-                <button class="btn btn-spend" onclick="takeAction(0)" id="btn-spend">
-                    <span class="icon">🍱</span>
+                <button class="btn btn-spend" onclick="takeAction(0)" id="btn-spend" aria-label="Food: spend on essentials">
+                    <span class="icon" aria-hidden="true">🍱</span>
                     <span>Food</span>
                 </button>
-                <button class="btn btn-save" onclick="takeAction(1)" id="btn-save">
-                    <span class="icon">🏦</span>
+                <button class="btn btn-save" onclick="takeAction(1)" id="btn-save" aria-label="Save money">
+                    <span class="icon" aria-hidden="true">🏦</span>
                     <span>Save</span>
                 </button>
-                <button class="btn btn-skip" onclick="takeAction(2)" id="btn-skip">
-                    <span class="icon">⏳</span>
+                <button class="btn btn-skip" onclick="takeAction(2)" id="btn-skip" aria-label="Skip this day">
+                    <span class="icon" aria-hidden="true">⏳</span>
                     <span>Skip</span>
                 </button>
-                <button class="btn btn-luxury" onclick="takeAction(3)" id="btn-luxury">
-                    <span class="icon">🏎️</span>
+                <button class="btn btn-luxury" onclick="takeAction(3)" id="btn-luxury" aria-label="Luxury spend">
+                    <span class="icon" aria-hidden="true">🏎️</span>
                     <span>Luxury</span>
                 </button>
             </div>
@@ -90,11 +107,11 @@
         <!-- Footer / Reset -->
         <footer>
             <button class="btn-reset" onclick="resetEnv()">Reset Environment</button>
-        </main>
+        </footer>
     </div>
 
     <!-- Modals -->
-    <div id="modal-overlay" class="auth-overlay" style="display: none;">
+    <div id="modal-overlay" class="auth-overlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="auth-card modal-content">
             <h2 id="modal-title">Title</h2>
             <div id="modal-body" class="modal-body"></div>
@@ -103,7 +120,7 @@
     </div>
 
     <!-- Notification Container -->
-    <div id="notifications"></div>
+    <div id="notifications" aria-live="polite"></div>
 
     <script src="index.js"></script>
 </body>
