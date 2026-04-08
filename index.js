@@ -1,6 +1,6 @@
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? `http://${window.location.hostname}:8000`   // local backend always on 8000
-    : window.location.origin;                      // production: same origin (Render)
+    ? `http://${window.location.hostname}:8000`
+    : window.location.origin;
 let totalReward = 0;
 let authToken = localStorage.getItem("expense_token");
 let balanceChart;
