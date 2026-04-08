@@ -1,4 +1,4 @@
-const API_BASE = window.location.origin.includes("localhost") ? window.location.origin : "http://localhost:8002";
+const API_BASE = window.location.origin;
 let totalReward = 0;
 let authToken = localStorage.getItem("expense_token");
 let balanceChart;
